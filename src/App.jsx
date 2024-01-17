@@ -44,7 +44,7 @@ function App() {
           name="pokemonName"
           placeholder="Enter a Pokemon Name!"
         />
-        <button type="submit">Search!</button>
+        <button type="submit">Add!</button>
       </form>
       <div className="Holder">
         {lst.map((x) => {
