@@ -24,6 +24,7 @@ const colors = {
 function Card({ name, image, hp, atk, def, shine, pkmnType }) {
   const [img, setImg] = useState(image);
   const cardRef = useRef();
+  const firstType = pkmnType[0].type.name;
 
   function hoverHandler() {
     setImg(shine);
@@ -37,12 +38,22 @@ function Card({ name, image, hp, atk, def, shine, pkmnType }) {
     <div
       ref={cardRef}
       className="sampleCard"
-      style={{ backgroundColor: colors[pkmnType][0] }}
+      style={{
+        background: `linear-gradient(45deg, ${colors[firstType][0]}, ${colors[firstType][2]})`,
+      }}
     >
       <h1 className="pokeName">{name}</h1>
-      <h1 className="pkmntype">{pkmnType}</h1>
+      <div className="typeHolder">
+        {pkmnType.map((x) => {
+          return (
+            <h1 key={x.type.name} className="pkmntype">
+              {x.type.name}
+            </h1>
+          );
+        })}
+      </div>
       <img
-        style={{ backgroundColor: colors[pkmnType][1] }}
+        style={{ backgroundColor: colors[firstType][1] }}
         onMouseOver={hoverHandler}
         onMouseOut={mouseOut}
         src={img}
@@ -50,11 +61,13 @@ function Card({ name, image, hp, atk, def, shine, pkmnType }) {
         width="150px"
       />
       <div className="stats">
-        <h2 style={{ backgroundColor: colors[pkmnType][2] }}>HP: {hp}</h2>
+        <h2 style={{ backgroundColor: colors[firstType][2] }}>HP: {hp}</h2>
         <br />
-        <h2 style={{ backgroundColor: colors[pkmnType][2] }}>Attack: {atk}</h2>
+        <h2 style={{ backgroundColor: colors[firstType][2] }}>Attack: {atk}</h2>
         <br />
-        <h2 style={{ backgroundColor: colors[pkmnType][2] }}>Defense: {def}</h2>
+        <h2 style={{ backgroundColor: colors[firstType][2] }}>
+          Defense: {def}
+        </h2>
       </div>
     </div>
   );

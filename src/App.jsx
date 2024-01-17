@@ -18,7 +18,8 @@ function App() {
         const atk = data.stats[1].base_stat || "NULL";
         const def = data.stats[2].base_stat || "NULL";
         const shiny = data.sprites.other["official-artwork"].front_shiny;
-        const type = data.types[0].type.name;
+        // const type = data.types[0].type.name;
+        const type = data.types;
 
         const item = {
           img: data.sprites.other["official-artwork"].front_default,
