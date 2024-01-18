@@ -4,6 +4,10 @@ body {
   background-color: #1d1a31;
 }
 
+form {
+  text-align: center;
+}
+
 form > input {
   background-color: #e2de84;
   border: none;
@@ -116,4 +120,48 @@ form {
   background-color: #ecfeaa;
   border-radius: inherit;
   display: inline-block !important;
+}
+
+.TOOLTIP {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  text-align: center;
+  font-weight: bold;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: white;
+  background-color: #1d1a31;
+  border-radius: 50%;
+}
+.TOOLTIP:hover {
+  cursor: help;
+}
+.INFOTIP {
+  padding: 0.5rem;
+  background-color: rgba(29, 26, 49);
+  opacity: 0;
+  position: absolute;
+  height: 17.5rem;
+  width: 11.1rem;
+  left: -10.6rem;
+  top: 2rem;
+  border-radius: 1rem 1rem 0 0;
+  z-index: 9999;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  text-align: left;
+  font-family: "Josefin Sans", sans-serif;
+  transform: translateY(17rem);
+  transition: transform 0.3s ease-in-out;
+}
+
+.TOOLTIP:hover .INFOTIP {
+  opacity: 0.9;
+  transform: translateY(0rem);
+}
+
+.ability {
+  margin: 0;
 }

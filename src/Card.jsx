@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import Tooltip from "./Tooltip.jsx";
 
 const colors = {
   normal: ["#D5D5AE", "#E6E6C6", "#FFFFE6"],
@@ -21,7 +22,7 @@ const colors = {
   fairy: ["#E4BFD4", "#F8D9DC", "#FEF3FF"],
 };
 
-function Card({ name, image, hp, atk, def, shine, pkmnType }) {
+function Card({ name, image, hp, atk, def, shine, pkmnType, ability }) {
   const [img, setImg] = useState(image);
   const cardRef = useRef();
   const firstType = pkmnType[0].type.name;
@@ -43,6 +44,7 @@ function Card({ name, image, hp, atk, def, shine, pkmnType }) {
       }}
     >
       <h1 className="pokeName">{name}</h1>
+      <Tooltip info={ability} />
       <div className="typeHolder">
         {pkmnType.map((x) => {
           return (

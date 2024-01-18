@@ -20,6 +20,7 @@ function App() {
         const shiny = data.sprites.other["official-artwork"].front_shiny;
         // const type = data.types[0].type.name;
         const type = data.types;
+        const abilities = data.abilities;
 
         const item = {
           img: data.sprites.other["official-artwork"].front_default,
@@ -29,6 +30,7 @@ function App() {
           def,
           shiny,
           type,
+          abilities,
         };
         console.table(item);
         setLst((prevLst) => [...prevLst, item]);
@@ -59,6 +61,7 @@ function App() {
               def={x.def}
               shine={x.shiny}
               pkmnType={x.type}
+              ability={x.abilities}
             />
           );
         })}
