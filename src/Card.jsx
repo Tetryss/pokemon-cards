@@ -2,30 +2,31 @@ import { useState, useRef } from "react";
 import Tooltip from "./Tooltip.jsx";
 
 const colors = {
-  normal: ["#D5D5AE", "#E6E6C6", "#FFFFE6"],
-  fire: ["#F2B583", "#FAC8A8", "#FFEB99"],
-  water: ["#8AA8F7", "#B8D4F7", "#D1EEFD"],
-  electric: ["#FCEC97", "#FDE8B9", "#FFFFE6"],
-  grass: ["#AEDCA3", "#C9EBC9", "#D9EFD1"],
-  ice: ["#BCEAEA", "#D6F5F5", "#E6FAFA"],
-  fighting: ["#E88781", "#EFA8A3", "#EFCFBB"],
-  poison: ["#D18BC1", "#DBA9DA", "#DDC9DD"],
-  ground: ["#EFDFA5", "#F4EDC6", "#F8F4E3"],
-  flying: ["#C1B3F7", "#D5D0F9", "#EDEAF9"],
-  psychic: ["#FCA6BB", "#FDBFD4", "#FFDFEB"],
-  bug: ["#C6D68A", "#DCE7B8", "#F2F5E8"],
-  rock: ["#D8D2A7", "#E5E2BE", "#EFEADA"],
-  ghost: ["#BAA4CC", "#D0C2E1", "#E1D5EC"],
-  dragon: ["#9A8EFD", "#C2B2F4", "#DBCBE8"],
-  dark: ["#8C7B6F", "#B2A298", "#C5BAB3"],
-  steel: ["#CCCCE3", "#E1E1F0", "#F0F0FA"],
-  fairy: ["#E4BFD4", "#F8D9DC", "#FEF3FF"],
+  normal: ["#B3B381", "#CCCDA6", "#E6E6C6"],
+  fire: ["#C69361", "#E0B190", "#FFEB99"],
+  water: ["#6D80C6", "#94B2D8", "#AFCFFF"],
+  electric: ["#E0C46A", "#E8D5A3", "#FFFFE6"],
+  grass: ["#90BD7F", "#ADCFA7", "#C3D9BB"],
+  ice: ["#9ECBCB", "#B4E4E4", "#CCEDED"],
+  fighting: ["#C2746D", "#D1958F", "#DFD4C6"],
+  poison: ["#AA6B92", "#C095C1", "#D5C9D5"],
+  ground: ["#D9CA7A", "#E3DBC0", "#F1EAD8"],
+  flying: ["#A392F7", "#BFB9F9", "#D8D4F9"],
+  psychic: ["#E57480", "#EFA8B9", "#FFDFEB"],
+  bug: ["#AABF7D", "#C3D9AA", "#F2F5E8"],
+  rock: ["#BFB99D", "#D0CEB6", "#EFEADA"],
+  ghost: ["#9A86B3", "#BAA6CC", "#CEC1DA"],
+  dragon: ["#7C73D0", "#A397E6", "#C0C8F0"],
+  dark: ["#706854", "#968A7F", "#ACA29C"],
+  steel: ["#AFAFCF", "#CDCDE3", "#E5E5F2"],
+  fairy: ["#D99CB3", "#F0C9D0", "#FDE6F6"],
 };
 
 function Card({ name, image, hp, atk, def, shine, pkmnType, ability }) {
   const [img, setImg] = useState(image);
   const cardRef = useRef();
   const firstType = pkmnType[0].type.name;
+  const secondType = pkmnType[1]?.type.name;
 
   function hoverHandler() {
     setImg(shine);
@@ -40,7 +41,9 @@ function Card({ name, image, hp, atk, def, shine, pkmnType, ability }) {
       ref={cardRef}
       className="sampleCard"
       style={{
-        background: `linear-gradient(45deg, ${colors[firstType][0]}, ${colors[firstType][2]})`,
+        background: `linear-gradient(45deg, ${colors[firstType][0]}, ${
+          (secondType && colors[secondType][2]) || colors[firstType][2]
+        })`,
       }}
     >
       <h1 className="pokeName">{name}</h1>
@@ -55,7 +58,7 @@ function Card({ name, image, hp, atk, def, shine, pkmnType, ability }) {
         })}
       </div>
       <img
-        style={{ backgroundColor: colors[firstType][1] }}
+        style={{ backgroundColor: "rgba(29, 26, 49, 0.2)" }}
         onMouseOver={hoverHandler}
         onMouseOut={mouseOut}
         src={img}
